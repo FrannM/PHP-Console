@@ -22,16 +22,125 @@
     </div>
 
     <div class="container">
+
         <div class="row">
             <div class="col-12">
-                <div class="p-3 m-2 bg-success text-white">
-                    <h4>POO</h4> <br>
+                <div class="p-3 m-2 bg-secondary text-white">
+                    <h4>Métodos estáticos (Calculadora)</h4>
                     <?php
+                    class Calculadora
+                    {
+                        public static function sumar($num1, $num2)
+                        {
+                            return $num1 + $num2;
+                        }
+                        public static function restar($num1, $num2)
+                        {
+                            return $num1 - $num2;
+                        }
+                    }
+
+                    echo "El resultado de la suma es " . Calculadora::sumar(1, 1) . "<br>";
+                    echo "El resultado de la resta es " . Calculadora::restar(5, 1) . "<br>";
+
+
+                    /*
+                    $calc = new Calculadora();
+                    echo "El resultado de la suma es " . $calc->sumar(1,1) . "<br>";
+                    echo "El resultado de la resta es " . $calc->restar(5,1) . "<br>";
+                    */
+                    ?>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="p-3 m-2 bg-info text-white">
+                    <h4>Herencia</h4> <br>
+                    <?php
+                    class Mascotas
+                    {
+                        public $nombre;
+                        public $patas;
+
+                        public function __construct($nombre, $patas)
+                        {
+                            $this->nombre = $nombre;
+                            $this->patas  = $patas;
+                        }
+
+                        public function eat()
+                        {
+                            return "Estoy comiendo!";
+                        }
+                    }
+
+                    class Perro extends Mascotas
+                    {
+                        function run()
+                        {
+                            return "Estoy corriendo";
+                        }
+                    }
+
+                    class Gato extends Mascotas
+                    {
+                    }
+
+                    $Simba = new Gato("Simba", 4);
+                    $Cindy = new Perro("Cindy", 4);
+
+                    echo $Cindy->run() . "<br>";
+                    echo $Simba->eat() . "<br>";
 
                     ?>
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="p-3 m-2 bg-success text-white">
+                    <h4>POO</h4> <br>
+                    <?php
+                    class Mascota
+                    {
+                        public $nombre;
+                        public $tipo;
+                        public $patas = 4;
+
+                        function __construct($nombre, $patas, $tipo)
+                        {
+                            $this->nombre = $nombre;
+                            $this->tipo = $tipo;
+                            $this->patas = $patas;
+                        }
+
+                        public function getDesc()
+                        {
+                            if ($this->patas == 0) {
+                                return "Tu mascota es un " . $this->tipo . ", se llama " . $this->nombre . " y no tiene patas.";
+                            } else
+                                return "Tu mascota es un " . $this->tipo .  ", se llama " . $this->nombre . " y tiene " . $this->patas . " patas.";
+                        }
+                    }
+
+                    $perro = new Mascota("Cindy", 4, "perro");
+                    $gato = new Mascota("Simba", 4, "gato");
+                    $pez = new Mascota("Flipy", 0, "pez");
+
+                    echo $perro->getDesc() . "<br>";
+                    echo $gato->getDesc() . "<br>";
+                    echo $pez->getDesc();
+
+
+                    ?>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-12">
                 <div class="p-3 m-2 bg-danger text-white">
@@ -59,6 +168,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-6">
                 <div class="p-3 m-2 bg-dark text-white">
@@ -93,6 +203,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-4">
                 <div class="p-3 m-2 bg-primary text-white">
@@ -132,6 +243,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-6">
                 <div class="p-3 m-2 bg-secondary text-white">
@@ -162,7 +274,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="row">
             <div class="col-12">
@@ -212,20 +323,20 @@
                     }
 
                     /*
-                        if ($num == 1) {
-                            echo "La calificación es muy baja";
-                        } elseif ($num == 2 || $num == 4) {
-                            echo "La calificación sigue siendo baja!";
-                        } elseif ($num == 6) {
-                            echo "La calificación es mediocre!";
-                        } elseif ($num == 8) {
-                            echo "La calificación es buena!";
-                        } elseif ($num == 10) {
-                            echo "La calificación es excelente!";
-                        } else {
-                            echo "La calificación no es válida";
-                        }
-                        */
+                            if ($num == 1) {
+                                echo "La calificación es muy baja";
+                            } elseif ($num == 2 || $num == 4) {
+                                echo "La calificación sigue siendo baja!";
+                            } elseif ($num == 6) {
+                                echo "La calificación es mediocre!";
+                            } elseif ($num == 8) {
+                                echo "La calificación es buena!";
+                            } elseif ($num == 10) {
+                                echo "La calificación es excelente!";
+                            } else {
+                                echo "La calificación no es válida";
+                            }
+                            */
 
                     ?>
                 </div>
