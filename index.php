@@ -22,16 +22,32 @@
     </div>
 
     <div class="container">
+
+        <?php include('person.php'); ?>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="p-3 m-2 bg-info text-white">
+                    <h4>Include</h4>
+                    <?php
+                    $person = new Person("Max", "Tompson");
+
+                    echo $person->greetings();
+                    ?>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-6">
                 <div class="p-3 m-2 bg-dark text-white">
-                    <h4>Formularios</h4>
-                    <form class="form-inline">
+                    <h4>Formularios GET</h4>
+                    <form class="form-inline" method="GET" action="#">
                         <div class="form-group mx-sm-3 mb-2">
-                            <label for="inputPassword2" class="sr-only">Password</label>
-                            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                            <label for="saludo" class="sr-only">Saludo</label>
+                            <input type="text" class="form-control" id="saludo" name="saludo" placeholder="Di algo...">
                         </div>
-                        <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+                        <button type="submit" class="btn btn-primary mb-2">Confirmar</button>
                     </form>
 
                 </div>
@@ -39,16 +55,83 @@
             </div>
             <div class="col-6">
                 <div class="p-3 m-2 bg-success text-white">
-                    <h4>Formularios</h4>
+                    <h4>Formularios GET</h4>
+                    <?php
+                    if (isset($_GET['saludo'])) {
+                        echo $_GET['saludo'];
+                    } else {
+                        echo "Esperando saludo...";
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-6">
+                <div class="p-3 m-2 bg-dark text-white">
+                    <h4>Calculadora Form</h4>
+                    <form class="form-inline" method="POST" action="#">
+                        <div class="form-group mx-sm-1 mb-2">
+                            <label for="num1" class="sr-only">Número 1</label>
+                            <input type="number" class="form-control" id="num1" name="num1" placeholder="Ingrese el número 1">
+                        </div>
+                        <div class="form-group mx-sm-1 mb-2">
+                            <input type="number" class="form-control" id="num2" name="num2" placeholder="Ingrese el número 2">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Sumar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="p-3 m-2 bg-success text-white">
+                    <h4>Calculadora Result</h4>
+                    <?php
+                    if (isset($_POST['num1']) && isset($_POST['num2'])) {
+                        $result = $_POST['num1'] + $_POST['num2'];
+                        echo "El resultado es: " . $result;
+                    } else {
+                        echo "Esperando calculo";
+                    }
+                    ?>
                 </div>
 
             </div>
         </div>
 
+
+        <div class="row">
+            <div class="col-6">
+                <div class="p-3 m-2 bg-dark text-white">
+                    <h4>Formularios POST</h4>
+                    <form class="form-inline" method="POST" action="#">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="saludo" class="sr-only">Saludo</label>
+                            <input type="text" class="form-control" id="saludo" name="saludo" placeholder="Di algo...">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Confirmar</button>
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div class="p-3 m-2 bg-success text-white">
+                    <h4>Formularios POST</h4>
+                    <?php
+                    if (isset($_POST['saludo'])) {
+                        echo $_POST['saludo'];
+                    } else {
+                        echo "Esperando saludo...";
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-12">
-                <div class="p-3 m-2 bg-secondary text-white">
+                <div class="p-3 m-2 bg-danger text-white">
                     <h4>Métodos estáticos (Calculadora)</h4>
                     <?php
                     class Calculadora
