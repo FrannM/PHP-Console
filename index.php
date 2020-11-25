@@ -23,11 +23,29 @@
 
     <div class="container">
 
-        <?php include('person.php'); ?>
+        <?php
+        include('person.php');
+        include('automotores/auto.php');
+        include('automatizacion/auto.php');
+         ?>
 
         <div class="row">
             <div class="col-12">
-                <div class="p-3 m-2 bg-info text-white">
+                <div class="p-3 m-2 bg-primary text-white">
+                    <h4>Namespaces</h4>
+                    <?php
+                    $automotor = new automotores\Auto("Ford", 4, 4);
+                    $automatizador = new automatizacion\Auto("Bot social", 10, "Miércoles 2 de Diciembre de 2020");
+
+                    echo $automotor->getAuto() . "<br>";
+                    echo $automatizador->getAuto() . "<br>";
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="p-3 m-2 bg-danger text-white">
                     <h4>Include</h4>
                     <?php
                     $person = new Person("Max", "Tompson");
