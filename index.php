@@ -27,12 +27,34 @@
         include('person.php');
         include('automotores/auto.php');
         include('automatizacion/auto.php');
-         ?>
+        include('connection.php');
+        ?>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="p-3 m-2 bg-dark text-white">
+                    <h4>Base de datos</h4> <br>
+                    <?php
+                    $persons = $conn->query('SELECT * from persons');
+
+
+                    foreach ($persons as $person) {
+                        echo "Nombre Completo: " . $person['First Name'] . " " . $person['Last Name'] . "<br>";
+                    }
+
+
+                    $conn = null;
+                    ?>
+                </div>
+            </div>
+        </div>
+
+
 
         <div class="row">
             <div class="col-12">
                 <div class="p-3 m-2 bg-primary text-white">
-                    <h4>Namespaces</h4>
+                    <h4>Namespaces</h4> <br>
                     <?php
                     $automotor = new automotores\Auto("Ford", 4, 4);
                     $automatizador = new automatizacion\Auto("Bot social", 10, "Miércoles 2 de Diciembre de 2020");
